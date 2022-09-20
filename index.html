@@ -4,15 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <h2>User Vs Computer</h2>
-    <div id="demo">
+    
+    <div class="container">
+        <div class="play-area">
+            <h2 class="game-title">Rock Paper Scissors, User Vs Computer</h2>
+            <div class="scores-area">
+                <div class="userSide">
+                    <img src="./assets/images/angry-user.png" alt="user_avatar" class="userAvatar">
+                    <h3 class="points">Points: 0</h3>
+                </div>
+                <div class="result">
+                    <h3>
+                        Let's Start The Battle, <br> Earn 5 points to win the game.
+                    </h3>
+                </div>
+                <div class="compSide">
+                    <img src="./assets/images/computer.png" alt="comp_avatar" class="compAvatar">
+                    <h3 class="points">Points: 0</h3>
+                </div>
+            </div>
+            <div class="moves">
+                <div class="rock">
+                    <input type="image" src="./assets/images/rock.png" value="Rock"></input>
+                </div>
+                <div class="paper">
+                    <input type="image" src="./assets/images/paper.png" value="Paper"></input>
+                </div>
+                <div class="scissors">
+                    <input type="image" src="./assets/images/scissors.png" value="Scissors"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    <!-- <div id="demo">
+
+    </div>
+    <div>
         <input type="button" value="Rock"></input>
         <input type="button" value="Paper"></input>
         <input type="button" value="Scissors"></input>
-    </div>
+    </div> -->
     
     <script src="./assets/js/script.js"></script>
 </body>

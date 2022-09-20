@@ -24,54 +24,68 @@
             }
 
         */
+            let userVal = '';
             let userWin = 0;
             let compWin = 0;
-            
-            //UserValue
-            let userVal = prompt('Please Enter Rock, Paper or Scissors.');
-            
-            userVal = userVal.toLowerCase();
-            
-            
-            //CompValue
-            let computerOptions = ['rock', 'paper', 'scissors'];
-            let computerSelect = computerOptions[Math.floor(Math.random() * computerOptions.length)];
-            
-           
-            //Checking Results
-            function playRound(userVal, computerSelect){ 
-                    let result = '';
-                    for (i = 1; i < 5 ; i++){
-                        if( userVal == computerSelect ){
-                            result = 'Round Tied.';
-                            
-                        }
-                        else if ( 
-                            (userVal == 'rock' && computerSelect == 'paper' ) 
-                            || (userVal == 'paper' && computerSelect == 'scissors' )
-                            || (userVal == 'scissors' && computerSelect == 'rock' )
-                        ){
-                            compWin += 1;
-                            result = `Computer Won! <br> ${computerSelect} beat ${userVal} <br>
-                            uWon: ${userWin} | cWon: ${compWin}`;
-                            if(compWin == 5){
-                                alert('Game Over');
-                            }
-                           
-                        }
-                        else{
-                            userWin += 1;
-                            result = `You Won! <br> ${userVal} beat ${computerSelect} <br>
-                            uWon: ${userWin} | cWon: ${compWin}`;
-                            if(userWin == 5){
-                                alert('Game Over');
-                            }
-                            
-                        }
-                            document.getElementById('demo').innerHTML = result;
-                            
+
+             //Round Play
+            function roundPlay(e){
+                //userPick
+                userPick = e.target.value;
+                userPick = userPick.toLowerCase();
+                console.log('userPick: ' + userPick);
+
+
+                //CompPick
+                let computerOptions = ['rock', 'paper', 'scissors'];
+                let compPick = computerOptions[Math.floor(Math.random() * computerOptions.length)];
+                console.log('compPick: ' + compPick);
+
+
+                //Compare Picks
+                let result = '';
+                    if( userPick == compPick ){
+                        result = 'round tied';
                         
                     }
+                    else if ( 
+                        (userPick == 'rock' && compPick == 'paper' ) 
+                        || (userPick == 'paper' && compPick == 'scissors' )
+                        || (userPick == 'scissors' && compPick == 'rock' )
+                    ){
+                        compWin += 1;
+                        result = `${compPick} beat ${userPick}`;
+                        if(compWin == 5){
+                            disableBtns();
+                           result = "Computer Won!!! <br> Refresh the page to play again.";
+                        }
                     
-                }        
-                playRound(userVal, computerSelect);
+                    }
+                    else{
+                        userWin += 1;
+                        result = `${userPick} beat ${compPick}`;
+                        if(userWin == 5){
+                            disableBtns();
+                            result = 'You Won!!! <br> Refresh page to play again.';
+                        }
+                        
+                    }
+                   document.querySelector('.result h3').innerHTML=result;
+                   document.querySelector('.userSide .points').innerHTML= '<h3> Points: ' + userWin + '</h3>';
+                   document.querySelector('.compSide .points').innerHTML='<h3> Points: ' + compWin + '</h3>';
+                }
+            
+            
+            
+            
+            pickBtns = document.querySelectorAll('input');
+            pickBtns.forEach(pickBtn => {
+                pickBtn.addEventListener('click', roundPlay);
+            });
+
+            function disableBtns(){
+                btns = document.querySelectorAll('input');
+                btns.forEach(btn => {
+                   btn.disabled = true;
+                });
+            }
