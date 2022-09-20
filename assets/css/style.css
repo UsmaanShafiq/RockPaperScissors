@@ -20,7 +20,7 @@ body{
     height: 100vh;
 }
 .play-area{
-    width: 80%;
+    width: 1200px;
     height: 85vh;
     border: 2px dashed rgba(255, 255, 255, 0.288);
     background-color: #14001a;
