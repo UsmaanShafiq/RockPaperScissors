@@ -30,16 +30,14 @@
 
              //Round Play
             function roundPlay(e){
+
                 //userPick
                 userPick = e.target.value;
                 userPick = userPick.toLowerCase();
-                console.log('userPick: ' + userPick);
-
 
                 //CompPick
                 let computerOptions = ['rock', 'paper', 'scissors'];
                 let compPick = computerOptions[Math.floor(Math.random() * computerOptions.length)];
-                console.log('compPick: ' + compPick);
 
 
                 //Compare Picks
@@ -57,7 +55,10 @@
                         result = `${compPick} beat ${userPick}`;
                         if(compWin == 5){
                             disableBtns();
-                           result = "Computer Won!!! <br> Please refresh the page to play again.";
+                            result = "Computer Won!!! <br> Please refresh the page to play again.";
+                            //change result section bgColor by adding class
+                            resBgClr = document.getElementById('result').classList;
+                            resBgClr.add('red');
                         }
                     
                     }
@@ -67,25 +68,31 @@
                         if(userWin == 5){
                             disableBtns();
                             result = 'You Won!!! <br> Please refresh the page to play again.';
+
+                            //change result section bgColor by adding class
+                            resBgClr = document.getElementById('result').classList;
+                            resBgClr.add('green');
                         }
                         
                     }
-                   document.querySelector('.result h3').innerHTML=result;
+                   document.querySelector('#result').innerHTML = '<h3>' + result + '</h3>';
                    document.querySelector('.userSide .points').innerHTML= '<h3> Points: ' + userWin + '</h3>';
                    document.querySelector('.compSide .points').innerHTML='<h3> Points: ' + compWin + '</h3>';
                 }
             
             
             
-            
+            // playRound
             pickBtns = document.querySelectorAll('input');
             pickBtns.forEach(pickBtn => {
                 pickBtn.addEventListener('click', roundPlay);
             });
 
+            //disable buttons
             function disableBtns(){
                 btns = document.querySelectorAll('input');
                 btns.forEach(btn => {
                    btn.disabled = true;
                 });
+
             }

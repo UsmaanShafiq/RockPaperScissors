@@ -6,6 +6,14 @@ body{
     box-sizing: border-box;
     font-family: 'Courier New', Courier, monospace;
 }
+.red{
+    background: red;
+    transition: 0.5s;
+}
+.green{
+    background: green;
+    transition: 0.5s;
+}
 .game-title{
     text-align: center;
     color: #fff;
@@ -37,7 +45,7 @@ body{
     align-items: center;
     width: 100%;
 }
-.userSide, .result, .compSide{
+.userSide, #result, .compSide{
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -50,7 +58,7 @@ body{
     margin: 0px 10px;
     min-height: 300px;
 }
-.result {
+#result {
     font-size: 20px;
     padding: 0px 20px;
     line-height: 30px;
