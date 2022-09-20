@@ -57,7 +57,7 @@
                         result = `${compPick} beat ${userPick}`;
                         if(compWin == 5){
                             disableBtns();
-                           result = "Computer Won!!! <br> Refresh the page to play again.";
+                           result = "Computer Won!!! <br> Please refresh the page to play again.";
                         }
                     
                     }
@@ -66,7 +66,7 @@
                         result = `${userPick} beat ${compPick}`;
                         if(userWin == 5){
                             disableBtns();
-                            result = 'You Won!!! <br> Refresh page to play again.';
+                            result = 'You Won!!! <br> Please refresh the page to play again.';
                         }
                         
                     }
