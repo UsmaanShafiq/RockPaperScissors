@@ -24,54 +24,75 @@
             }
 
         */
+            let userVal = '';
             let userWin = 0;
             let compWin = 0;
-            
-            //UserValue
-            let userVal = prompt('Please Enter Rock, Paper or Scissors.');
-            
-            userVal = userVal.toLowerCase();
-            
-            
-            //CompValue
-            let computerOptions = ['rock', 'paper', 'scissors'];
-            let computerSelect = computerOptions[Math.floor(Math.random() * computerOptions.length)];
-            
-           
-            //Checking Results
-            function playRound(userVal, computerSelect){ 
-                    let result = '';
-                    for (i = 1; i < 5 ; i++){
-                        if( userVal == computerSelect ){
-                            result = 'Round Tied.';
-                            
-                        }
-                        else if ( 
-                            (userVal == 'rock' && computerSelect == 'paper' ) 
-                            || (userVal == 'paper' && computerSelect == 'scissors' )
-                            || (userVal == 'scissors' && computerSelect == 'rock' )
-                        ){
-                            compWin += 1;
-                            result = `Computer Won! <br> ${computerSelect} beat ${userVal} <br>
-                            uWon: ${userWin} | cWon: ${compWin}`;
-                            if(compWin == 5){
-                                alert('Game Over');
-                            }
-                           
-                        }
-                        else{
-                            userWin += 1;
-                            result = `You Won! <br> ${userVal} beat ${computerSelect} <br>
-                            uWon: ${userWin} | cWon: ${compWin}`;
-                            if(userWin == 5){
-                                alert('Game Over');
-                            }
-                            
-                        }
-                            document.getElementById('demo').innerHTML = result;
-                            
+
+             //Round Play
+            function roundPlay(e){
+
+                //userPick
+                userPick = e.target.value;
+                userPick = userPick.toLowerCase();
+
+                //CompPick
+                let computerOptions = ['rock', 'paper', 'scissors'];
+                let compPick = computerOptions[Math.floor(Math.random() * computerOptions.length)];
+
+
+                //Compare Picks
+                let result = '';
+                    if( userPick == compPick ){
+                        result = 'round tied';
                         
                     }
+                    else if ( 
+                        (userPick == 'rock' && compPick == 'paper' ) 
+                        || (userPick == 'paper' && compPick == 'scissors' )
+                        || (userPick == 'scissors' && compPick == 'rock' )
+                    ){
+                        compWin += 1;
+                        result = `${compPick} beat ${userPick}`;
+                        if(compWin == 5){
+                            disableBtns();
+                            result = "Computer Won!!! <br> Please refresh the page to play again.";
+                            //change result section bgColor by adding class
+                            resBgClr = document.getElementById('result').classList;
+                            resBgClr.add('red');
+                        }
                     
-                }        
-                playRound(userVal, computerSelect);
+                    }
+                    else{
+                        userWin += 1;
+                        result = `${userPick} beat ${compPick}`;
+                        if(userWin == 5){
+                            disableBtns();
+                            result = 'You Won!!! <br> Please refresh the page to play again.';
+
+                            //change result section bgColor by adding class
+                            resBgClr = document.getElementById('result').classList;
+                            resBgClr.add('green');
+                        }
+                        
+                    }
+                   document.querySelector('#result').innerHTML = '<h3>' + result + '</h3>';
+                   document.querySelector('.userSide .points').innerHTML= '<h3> Points: ' + userWin + '</h3>';
+                   document.querySelector('.compSide .points').innerHTML='<h3> Points: ' + compWin + '</h3>';
+                }
+            
+            
+            
+            // playRound
+            pickBtns = document.querySelectorAll('input');
+            pickBtns.forEach(pickBtn => {
+                pickBtn.addEventListener('click', roundPlay);
+            });
+
+            //disable buttons
+            function disableBtns(){
+                btns = document.querySelectorAll('input');
+                btns.forEach(btn => {
+                   btn.disabled = true;
+                });
+
+            }

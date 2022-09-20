@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+.red{
+    background: red;
+    transition: 0.5s;
+}
+.green{
+    background: green;
+    transition: 0.5s;
+}
+.game-title{
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    font-size: 30px;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1C0023;
+    height: 100vh;
+}
+.play-area{
+    width: 1200px;
+    height: 85vh;
+    border: 2px dashed rgba(255, 255, 255, 0.288);
+    background-color: #14001a;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+.scores-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.userSide, #result, .compSide{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    border: 2px dashed rgba(255, 255, 255, 0.288);
+    border-radius: 10px;
+    margin: 0px 10px;
+    min-height: 300px;
+}
+#result {
+    font-size: 20px;
+    padding: 0px 20px;
+    line-height: 30px;
+}
+.userSide .userAvatar, .compSide .compAvatar{
+    height: 200px;
+    width: 200px;
+}
+.moves{
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+    border: 2px dashed rgba(255, 255, 255, 0.288);
+    padding: 20px 0px;
+    border-radius: 10px;
+}
+.moves div{
+    height: 60px;
+    width: 60px;
+    background: rgba(255, 255, 255, 0.274);
+    padding: 30px;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+.moves div:hover{
+    background: rgba(255, 255, 255, 0.5);
+    transition: 0.5s;
+    cursor: pointer;
+}
+.moves div input[type='image']{
+    width: 100%;
+    cursor: pointer;
+}
