@@ -27,9 +27,12 @@
             let userVal = '';
             let userWin = 0;
             let compWin = 0;
+            let totalRound = 0;
 
              //Round Play
             function roundPlay(e){
+
+                totalRound += 1;
 
                 //userPick
                 userPick = e.target.value;
@@ -43,7 +46,7 @@
                 //Compare Picks
                 let result = '';
                     if( userPick == compPick ){
-                        result = 'round tied';
+                        result = `round tied <br> (total rounds - ${totalRound})`;
                         
                     }
                     else if ( 
@@ -52,7 +55,7 @@
                         || (userPick == 'scissors' && compPick == 'rock' )
                     ){
                         compWin += 1;
-                        result = `${compPick} beat ${userPick}`;
+                        result = `${compPick} beat ${userPick} <br> (total rounds - ${totalRound})`;
                         if(compWin == 5){
                             disableBtns();
                             result = "Computer Won!!! <br> Please refresh the page to play again.";
@@ -64,7 +67,7 @@
                     }
                     else{
                         userWin += 1;
-                        result = `${userPick} beat ${compPick}`;
+                        result = `${userPick} beat ${compPick} <br> (total rounds - ${totalRound})`;
                         if(userWin == 5){
                             disableBtns();
                             result = 'You Won!!! <br> Please refresh the page to play again.';
